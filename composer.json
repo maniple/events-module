@@ -1,0 +1,21 @@
+{
+    "name": "maniple/maniple-events",
+    "description": "Event management module for Maniple",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xemlock",
+            "email": "xemlock@gmail.com"
+        }
+    ],
+    "require": {
+        "zendframework/zend-mvc": "~2.2",
+        "zf-commons/zfc-twig": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "ManipleEvents\\": "src/"
+        }
+    }
+}
