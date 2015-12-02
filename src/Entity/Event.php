@@ -52,10 +52,16 @@ class Event
      */
     protected $participants;
 
+    /**
+     * @var \ManipleEvents\Entity\Track[]
+     */
+    protected $tracks;
+
     public function __construct()
     {
         $this->subEvents = new ArrayCollection();
         $this->participants = new ArrayCollection();
+        $this->tracks = new ArrayCollection();
     }
 
     /**
@@ -157,7 +163,7 @@ class Event
     /**
      * @param \ManiplEvents\Entity\Venue $venue
      */
-    public function setVenue(\ManiplEvents\Entity\Venue $venue)
+    public function setVenue(\ManiplEvents\Entity\Venue $venue = null)
     {
         $this->venue = $venue;
     }
@@ -167,6 +173,9 @@ class Event
      */
     public function getVenue()
     {
+        if ($this->venue === null && ($parentEvent = $this->getParentEvent())) {
+            return $parentEvent->getVenue();
+        }
         return $this->venue;
     }
 

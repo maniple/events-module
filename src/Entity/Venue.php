@@ -114,6 +114,9 @@ class Venue
      */
     public function getCity()
     {
+        if ($this->city === null && ($parentVenue = $this->getParentVenue())) {
+            return $parentVenue->getCity();
+        }
         return $this->city;
     }
 
@@ -130,6 +133,9 @@ class Venue
      */
     public function getCountry()
     {
+        if ($this->country === null && ($parentVenue = $this->getParentVenue())) {
+            return $parentVenue->getCountry();
+        }
         return $this->country;
     }
 
@@ -162,6 +168,9 @@ class Venue
      */
     public function getLatitude()
     {
+        if ($this->latitude === null && ($parentVenue = $this->getParentVenue())) {
+            return $parentVenue->getLatitude();
+        }
         return $this->latitude;
     }
 
@@ -178,6 +187,9 @@ class Venue
      */
     public function getLongitude()
     {
+        if ($this->longitude === null && ($parentVenue = $this->getParentVenue())) {
+            return $parentVenue->getLongitude();
+        }
         return $this->longitude;
     }
 
