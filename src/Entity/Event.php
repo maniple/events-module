@@ -2,6 +2,8 @@
 
 namespace ManipleEvents\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Event
 {
     /**
@@ -31,7 +33,7 @@ class Event
      * An event that this event is a part of
      * @var \ManipleEvents\Entity\Event
      */
-    protected $superEvent;
+    protected $parentEvent;
 
     /**
      * Events that are a part of this event
@@ -40,16 +42,137 @@ class Event
     protected $subEvents;
 
     /**
-     * Building(s) this event is hosted at
-     * @var \ManiplEvents\Entity\Building
+     * Venue this event is hosted at
+     * @var \ManiplEvents\Entity\Venue
      */
-    protected $buildings;
+    protected $venue;
 
     /**
      * @var \ManipleEvents\Entity\Participant[]
      */
     protected $participants;
 
+    public function __construct()
+    {
+        $this->subEvents = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+    }
+
+    /**
+     * @param int $duration
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = (int) $duration;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = (string) $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param \ManipleEvents\Entity\Event $parentEvent
+     */
+    public function setParentEvent(\ManipleEvents\Entity\Event $parentEvent)
+    {
+        $this->parentEvent = $parentEvent;
+    }
+
+    /**
+     * @return \ManipleEvents\Entity\Event
+     */
+    public function getParentEvent()
+    {
+        return $this->parentEvent;
+    }
+
+    /**
+     * @return array|ArrayAccess
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
+
+    /**
+     * @param \DateTime $startDate
+     */
+    public function setStartDate(\DateTime $startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * @return array|ArrayAccess
+     */
+    public function getSubEvents()
+    {
+        return $this->subEvents;
+    }
+
+    /**
+     * @param \ManiplEvents\Entity\Venue $venue
+     */
+    public function setVenue(\ManiplEvents\Entity\Venue $venue)
+    {
+        $this->venue = $venue;
+    }
+
+    /**
+     * @return \ManiplEvents\Entity\Venue
+     */
+    public function getVenue()
+    {
+        return $this->venue;
+    }
+
+    /**
+     * @return \DateTime
+     */
     public function getEndDate()
     {
         $endDate = new \DateTime();
