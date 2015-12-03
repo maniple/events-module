@@ -226,7 +226,7 @@ class Venue
     }
 
     /**
-     * @return array|ArrayAccess
+     * @return array|\ArrayAccess
      */
     public function getSubVenues()
     {

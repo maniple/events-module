@@ -22,48 +22,24 @@ class Participant
     protected $person;
 
     /**
-     * @var \ManipleEvents\Entity\EventRole
+     * @var \ManipleEvents\Entity\ParticipantRole
      */
-    protected $eventRole;
+    protected $role;
 
     /**
-     * @param \ManipleEvents\Entity\Event $event
+     * Participant priority, may be relevant when specifying authors
+     * @var int
      */
-    public function setEvent(\ManipleEvents\Entity\Event $event)
-    {
-        $this->event = $event;
-    }
-
-    /**
-     * @return \ManipleEvents\Entity\Event
-     */
-    public function getEvent()
-    {
-        return $this->event;
-    }
-
-    /**
-     * @param \ManipleEvents\Entity\EventRole $eventRole
-     */
-    public function setEventRole(\ManipleEvents\Entity\EventRole $eventRole)
-    {
-        $this->eventRole = $eventRole;
-    }
-
-    /**
-     * @return \ManipleEvents\Entity\EventRole
-     */
-    public function getEventRole()
-    {
-        return $this->eventRole;
-    }
+    protected $priority;
 
     /**
      * @param mixed $id
+     * @return $this
      */
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -75,11 +51,52 @@ class Participant
     }
 
     /**
-     * @param \ManipleEvents\Entity\Person $person
+     * @param \ManipleEvents\Entity\Event $event
+     * @return $this
      */
-    public function setPerson(\ManipleEvents\Entity\Person $person)
+    public function setEvent(Event $event)
+    {
+        $this->event = $event;
+        return $this;
+    }
+
+    /**
+     * @return \ManipleEvents\Entity\Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * @param \ManipleEvents\Entity\ParticipantRole|int $role
+     * @return $this
+     */
+    public function setRole($role)
+    {
+        if (!$role instanceof ParticipantRole) {
+            $role = new ParticipantRole($role);
+        }
+        $this->role = $role;
+        return $this;
+    }
+
+    /**
+     * @return \ManipleEvents\Entity\ParticipantRole
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param \ManipleEvents\Entity\Person $person
+     * @return $this
+     */
+    public function setPerson(Person $person)
     {
         $this->person = $person;
+        return $this;
     }
 
     /**
@@ -91,12 +108,30 @@ class Participant
     }
 
     /**
+     * @param int $priority
+     * @return $this
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
      * Proxy call to person entity
      *
      * @param string $method
      * @param array $args
      * @return mixed
-     * @throws \BadMethodCallException
+     * @throws \RuntimeException
      */
     public function __call($method, array $args)
     {

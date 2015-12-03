@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         colors="true"
+         verbose="true"
+         bootstrap="test/bootstrap.php"
+>
+    <testsuites>
+        <testsuite name="ManipleEvents Test Suite">
+            <directory suffix=".php">./test/ManipleEventsTest</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

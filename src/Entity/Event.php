@@ -12,16 +12,27 @@ class Event
     protected $id;
 
     /**
+     * @var \ManipleEvents\Entity\EventType
+     */
+    protected $type;
+
+    /**
      * Name (title) of this event
      * @var string
      */
     protected $name;
 
     /**
+     * Description of this event
+     * @var string
+     */
+    protected $description;
+
+    /**
      * Start date and time of this event
      * @var \DateTime
      */
-    protected $startDate;
+    protected $startTime;
 
     /**
      * Duration in seconds
@@ -43,7 +54,7 @@ class Event
 
     /**
      * Venue this event is hosted at
-     * @var \ManiplEvents\Entity\Venue
+     * @var \ManipleEvents\Entity\Venue
      */
     protected $venue;
 
@@ -129,7 +140,7 @@ class Event
     }
 
     /**
-     * @return array|ArrayAccess
+     * @return array|\ArrayAccess
      */
     public function getParticipants()
     {
@@ -138,22 +149,24 @@ class Event
 
     /**
      * @param \DateTime $startDate
+     * @return $this
      */
-    public function setStartDate(\DateTime $startDate)
+    public function setStartTime(\DateTime $startDate)
     {
-        $this->startDate = $startDate;
+        $this->startTime = $startDate;
+        return $this;
     }
 
     /**
      * @return \DateTime
      */
-    public function getStartDate()
+    public function getStartTime()
     {
-        return $this->startDate;
+        return $this->startTime;
     }
 
     /**
-     * @return array|ArrayAccess
+     * @return array|\ArrayAccess
      */
     public function getSubEvents()
     {
@@ -161,15 +174,17 @@ class Event
     }
 
     /**
-     * @param \ManiplEvents\Entity\Venue $venue
+     * @param \ManipleEvents\Entity\Venue $venue
+     * @return $this
      */
     public function setVenue(\ManiplEvents\Entity\Venue $venue = null)
     {
         $this->venue = $venue;
+        return $this;
     }
 
     /**
-     * @return \ManiplEvents\Entity\Venue
+     * @return \ManipleEvents\Entity\Venue
      */
     public function getVenue()
     {
@@ -182,10 +197,10 @@ class Event
     /**
      * @return \DateTime
      */
-    public function getEndDate()
+    public function getEndTime()
     {
         $endDate = new \DateTime();
-        $endDate->setTimestamp($this->getStartDate() + $this->getDuration());
+        $endDate->setTimestamp($this->getStartTime()->getTimestamp() + $this->getDuration());
         return $endDate;
     }
 }
