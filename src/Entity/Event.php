@@ -17,7 +17,13 @@ class Event
     protected $type;
 
     /**
-     * Name (title) of this event
+     * Code designation of this event, human assigned
+     * @var string
+     */
+    protected $code;
+
+    /**
+     * Name or title of this event
      * @var string
      */
     protected $name;
