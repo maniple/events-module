@@ -2,7 +2,7 @@
 
 namespace ManipleEvents\Entity;
 
-class Person
+class Person implements PersonInterface
 {
     /**
      * @var int

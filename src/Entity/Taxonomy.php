@@ -26,7 +26,7 @@ class Taxonomy
     protected $isHierarchical;
 
     /**
-     * @var array|\ArrayAccess
+     * @var \ManipleEvents\Entity\Taxon[]
      */
-    protected $tags;
+    protected $taxons;
 }

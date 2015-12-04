@@ -2,7 +2,7 @@
 
 namespace ManipleEvents\Entity;
 
-class EventTag
+class EventTaxon implements TaxonInterface
 {
     /**
      * @var int
@@ -15,12 +15,12 @@ class EventTag
     protected $event;
 
     /**
-     * @var \ManipleEvents\Entity\Tag
+     * @var \ManipleEvents\Entity\Taxon
      */
     protected $tag;
 
     /**
-     * Tag priority
+     * Taxon priority
      * @var int
      */
     protected $priority;

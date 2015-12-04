@@ -7,7 +7,7 @@ namespace ManipleEvents\Entity;
  *
  * @todo Repository must fetch rows along with related persons and eventRoles
  */
-class Participant
+class Participant implements PersonInterface
 {
     protected $id;
 
@@ -125,20 +125,21 @@ class Participant
         return $this->priority;
     }
 
-    /**
-     * Proxy call to person entity
-     *
-     * @param string $method
-     * @param array $args
-     * @return mixed
-     * @throws \RuntimeException
-     */
-    public function __call($method, array $args)
+    public function getFirstName()
     {
         $person = $this->getPerson();
-        if (empty($person)) {
-            throw new \RuntimeException('Person entity is not provided');
-        }
-        return call_user_func_array(array($person, $method), $args);
+        return $person ? $person->getFirstName() : null;
+    }
+
+    public function getLastName()
+    {
+        $person = $this->getPerson();
+        return $person ? $person->getLastName() : null;
+    }
+
+    public function getMiddleName()
+    {
+        $person = $this->getPerson();
+        return $person ? $person->getMiddleName() : null;
     }
 }

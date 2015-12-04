@@ -2,7 +2,7 @@
 
 namespace ManipleEvents\Entity;
 
-class Tag
+class Taxon implements TaxonInterface
 {
     /**
      * @var int
@@ -26,12 +26,12 @@ class Tag
     protected $slug;
 
     /**
-     * @var \ManipleEvents\Entity\Tag
+     * @var \ManipleEvents\Entity\Taxon
      */
     protected $parentTag;
 
     /**
-     * @var \ManipleEvents\Entity\Tag[]
+     * @var \ManipleEvents\Entity\Taxon[]
      */
     protected $subTags;
 }

@@ -70,15 +70,15 @@ class Event
     protected $participants;
 
     /**
-     * @var \ManipleEvents\Entity\Track[]
+     * @var \ManipleEvents\Entity\EventTaxon[]
      */
-    protected $tracks;
+    protected $taxons;
 
     public function __construct()
     {
         $this->subEvents = new ArrayCollection();
         $this->participants = new ArrayCollection();
-        $this->tracks = new ArrayCollection();
+        $this->taxons = new ArrayCollection();
     }
 
     /**
@@ -132,7 +132,7 @@ class Event
     /**
      * @param \ManipleEvents\Entity\Event $parentEvent
      */
-    public function setParentEvent(\ManipleEvents\Entity\Event $parentEvent)
+    public function setParentEvent(Event $parentEvent)
     {
         $this->parentEvent = $parentEvent;
     }
@@ -183,7 +183,7 @@ class Event
      * @param \ManipleEvents\Entity\Venue $venue
      * @return $this
      */
-    public function setVenue(\ManiplEvents\Entity\Venue $venue = null)
+    public function setVenue(Venue $venue = null)
     {
         $this->venue = $venue;
         return $this;
