@@ -2,11 +2,11 @@
 <phpunit backupGlobals="false"
          colors="true"
          verbose="true"
-         bootstrap="test/bootstrap.php"
+         bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="ManipleEvents Test Suite">
-            <directory suffix=".php">./test/ManipleEventsTest</directory>
+        <testsuite name="EventsModule Test Suite">
+            <directory suffix=".php">./tests/EventsModuleTest</directory>
         </testsuite>
     </testsuites>
 </phpunit>

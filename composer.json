@@ -1,5 +1,5 @@
 {
-    "name": "maniple/maniple-events",
+    "name": "maniple/events-module",
     "description": "Event management module for Maniple",
     "type": "library",
     "license": "MIT",
@@ -10,12 +10,10 @@
         }
     ],
     "require": {
-        "zendframework/zend-mvc": "~2.2",
-        "zf-commons/zfc-twig": "^1.2"
     },
     "autoload": {
         "psr-4": {
-            "ManipleEvents\\": "src/"
+            "Maniple\\EventsModule\\": "library/"
         }
     },
     "require-dev": {
